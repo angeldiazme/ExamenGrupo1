@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Examen_Grupo2.MainPage"
+             xmlns:signaturePad="clr-namespace:Syncfusion.Maui.SignaturePad;assembly=Syncfusion.Maui.SignaturePad"
+             Title="Ubicacion"
+             Background="White">
+
+    <ScrollView>
+        <StackLayout>
+            <Frame
+                Margin="20,20,20,0"
+                BorderColor="Black"
+                CornerRadius="10">
+                <signaturePad:SfSignaturePad
+                    x:Name="signaturePad" 
+                    HeightRequest="300" 
+                    WidthRequest="300" 
+                    StrokeColor="Black"/>
+            </Frame>
+
+            <Button 
+                x:Name="StartRecordingButton"
+                Margin="30,20,0,0"
+                HeightRequest="50" 
+                WidthRequest="150" 
+                HorizontalOptions="Start"
+                BackgroundColor="#38cefe"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Grabar Audio"
+                Clicked="OnStartRecordingClicked" />
+            
+            <Button 
+                x:Name="StopRecordingButton"
+                Margin="30,20,0,0"
+                HeightRequest="50" 
+                WidthRequest="150" 
+                HorizontalOptions="Start"
+                BackgroundColor="#38cefe"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="16"
+                IsVisible="False"
+                Text="Detener Audio"
+                Clicked="OnStopRecordingClicked" />
+
+            <Button 
+                Margin="20,-50,30,0"
+                HeightRequest="50" 
+                WidthRequest="150" 
+                HorizontalOptions="End"
+                BackgroundColor="#38cefe"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Limpiar Firma"
+                Clicked="ClearFirmaButtonClicked" />
+
+            <Label     
+               Text="Latitud"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="Black"
+               IsVisible="True"
+               HorizontalOptions="Start"
+               VerticalOptions="Center"
+               Margin="20,20,0,0"/>
+
+            <Entry 
+               x:Name="LatitudEntry"
+               IsEnabled="False"
+               Placeholder="Obteniendo datos...."
+               FontSize="16"
+               TextColor="Black"
+               Margin="15,0,20,0"/>
+
+            <Label     
+               Text="Longitud"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="Black"
+               IsVisible="True"
+               HorizontalOptions="Start"
+               VerticalOptions="Center"
+               Margin="20,20,0,0"/>
+
+            <Entry
+               x:Name="LongitudEntry"
+               IsEnabled="False"
+               Placeholder="Obteniendo datos...."
+               FontSize="16"
+               TextColor="Black"
+               Margin="15,0,20,0"/>
+
+            <Label     
+               Text="Descripcion"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="Black"
+               IsVisible="True"
+               HorizontalOptions="Start"
+               VerticalOptions="Center"
+               Margin="20,20,0,0"/>
+
+            <Entry 
+               x:Name="DescripcionEntry"
+               Placeholder="Obteniendo datos...."
+               FontSize="16"
+               TextColor="Black"
+               Margin="15,0,20,30"/>
+
+            <Button 
+                x:Name="saveButton"
+                Margin="20,0,20,20"
+                HeightRequest="50" 
+                WidthRequest="250" 
+                HorizontalOptions="CenterAndExpand"
+                BackgroundColor="#38cefe"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Guardar Ubicación"
+                Clicked="saveButton_Clicked"/>
+
+            <Button 
+                x:Name="listButton"
+                Margin="20,0,20,20"
+                HeightRequest="50" 
+                WidthRequest="250" 
+                HorizontalOptions="CenterAndExpand"
+                BackgroundColor="#38cefe"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Ubicaciones Guardadas"
+                Clicked="listButton_Clicked"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

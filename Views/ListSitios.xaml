@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conver="clr-namespace:Examen_Grupo2.Config"
+             xmlns:convert="clr-namespace:Examen_Grupo2.Controllers"
+             x:Class="Examen_Grupo2.Views.ListSitios"
+             Title="Lista de Ubicaciones">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convert:Base64ToImageConverter x:Key="BaseArray" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <CollectionView x:Name="listemple" SelectionMode="Single" SelectionChanged="listemple_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView Background="White">
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem
+                                        Text="Eliminar"
+                                        BackgroundColor="#ffb3ba"
+                                        Command="{Binding BindingContext.DeleteCommand, Source={x:Reference collectionView}}"
+                                        CommandParameter="{Binding .}" 
+                                        Clicked="Eliminar_Clicked"/>
+                                    <SwipeItem
+                                        Text="Actualizar" 
+                                        BackgroundColor="#baffc9"
+                                        Command="{Binding BindingContext.UpdateCommand, Source={x:Reference collectionView}}"
+                                        CommandParameter="{Binding .}" 
+                                        Clicked="Actualizar_Clicked"/>
+                                    <SwipeItem
+                                        Text="Mapa"
+                                        BackgroundColor="#bae1ff"
+                                        Command="{Binding BindingContext.UpdateCommand, Source={x:Reference collectionView}}"
+                                        CommandParameter="{Binding .}" 
+                                        Clicked="Mapa_Clicked"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Frame BackgroundColor="#38cefe" Margin="0,0,0,20">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame HeightRequest="150"
+                                           WidthRequest="85"
+                                           CornerRadius="20"
+                                           HorizontalOptions="Center"
+                                           IsClippedToBounds="True"
+                                           Padding="0"
+                                           BorderColor="Black"
+                                           Margin="0,0,20,0">
+                                        <Image Grid.Column="0"
+                                               x:Name="imagen"
+                                               Source="{Binding firma, Converter={StaticResource BaseArray}}"
+                                               Aspect="AspectFill"
+                                               HeightRequest="70"
+                                               WidthRequest="70"/>
+                                    </Frame>
+                                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                        <Label Text="Latitud" Margin="0,5,0,0" FontAttributes="Bold"/>
+                                        <Label Text="{Binding latitud}"/>
+                                        <Label Text="Longitud" Margin="0,5,0,0" FontAttributes="Bold"/>
+                                        <Label Text="{Binding longitud}"/>
+                                        <Label Text="Descripcion" Margin="0,5,0,0" FontAttributes="Bold"/>
+                                        <Label Text="{Binding descripcion}"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
